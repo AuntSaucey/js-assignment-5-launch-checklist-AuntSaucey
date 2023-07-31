@@ -17,7 +17,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
-    if (InputDeviceInfo.trim() === ""){
+    if (input.trim() === ""){
         return "Empty";
     } else if (isNaN(input)) {
         return "Not a Number";
@@ -27,6 +27,23 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+   const pilotStatus = validateInput(pilot);
+   const copilotStatus = validateInput(copilot);
+   const fuelLevelStatus = validateInput(fuelLevel);
+   const cargoMassStatus= validateInput(cargoMass);
+   
+   document.getElementById("pilotStatus").innerHTML = `Pilot: ${pilotStatus}`;
+   document.getElementById("copilotStatus").innerHTML = `Co-pilot: ${copilotStatus}`;
+   document.getElementById("fuelLevelStatus").innerHTML = (fuelLevelStatus === "Is a Number") ? "Fuel level high enough for launch" :"Fuel level too low for launch";
+   document.getElementById("cargoStatus").innerHTML = (cargoMassStatus === "Is a Number") ? "Cargo mass low enough for launch" : "Cargo mass too high for launch";
+
+   if (pilotStatus === "Is a Number" && copilotStatus === "Is a Number" && fuelLevelStatus === "Is a Number" && cargoMassStatus === "Is a Number") {
+    document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
+    document.getElementById("launchStatus").style.color = black;
+   } else {
+    document.getElementById("launchStatus").innerHTML = "Shuttle Not Ready for Launch";
+    document.getElementById("launchStatus").innerHTML.style.color = "red";
+   }
 }
 
 async function myFetch() {

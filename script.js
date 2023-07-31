@@ -1,6 +1,7 @@
 // Write your JavaScript code here!
 
 //const { formSubmission } = require("./scriptHelper");
+//const { validateInput } = require('./scriptHelper');
 
 window.addEventListener("load", function() {
     const testForm = document.querySelector("form");
@@ -17,7 +18,6 @@ window.addEventListener("load", function() {
             fuelLevelInput.value === "" ||
             cargoMassInput.value === ""
         ){  
-console.log("hello");
         alert("All fields are required!");
         event.preventDefault();
         }

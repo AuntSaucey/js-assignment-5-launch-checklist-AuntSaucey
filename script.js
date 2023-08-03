@@ -2,10 +2,11 @@
 
 //const { formSubmission } = require("./scriptHelper");
 
-window.addEventListener("load", function() {
+window.addEventListener("load", function(event) {
     event.preventDefault();
     const testForm = document.querySelector("form");
     testForm.addEventListener("submit", function(event){
+        event.preventDefault();
 
         const pilotNameInput= document.querySelector("input[name='pilotName']");
         const copilotNameInput = document.querySelector("input[name='copilotName']");
@@ -21,13 +22,22 @@ window.addEventListener("load", function() {
         alert("All fields are required!");
         }
 
-        if (pilotNameInput !== "Is a Number" || copilotNameInput !== "Is a Number") {
-        alert ("Please enter a valid entry!");
+        if (!isNaN(pilotNameInput.value) || !isNaN(copilotNameInput.value)) {
+        alert ("Please enter a valid name!");
+        return;
         }
 
-        if (fuelLevelInput === "Not a Number" || cargoMassInput === "Not a Number") {
-            alert ("Please enter a valid entry!");
+        if (isNaN(fuelLevelInput.value) || isNaN(cargoMassInput.value)) {
+            alert ("Please enter valid numerical values for fuel level and cargo mass!");
+            return;
         }
+    formSubmission(
+        document, 
+        pilotNameInput.value, 
+        copilotNameInput.value, 
+        fuelLevelInput.value, 
+        cargoMassInput.value
+        );
     });
 });
 

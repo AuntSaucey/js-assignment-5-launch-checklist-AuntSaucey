@@ -1,9 +1,9 @@
 // Write your JavaScript code here!
 
 //const { formSubmission } = require("./scriptHelper");
-//const { validateInput } = require('./scriptHelper');
 
 window.addEventListener("load", function() {
+    event.preventDefault();
     const testForm = document.querySelector("form");
     testForm.addEventListener("submit", function(event){
 
@@ -19,7 +19,14 @@ window.addEventListener("load", function() {
             cargoMassInput.value === ""
         ){  
         alert("All fields are required!");
-        event.preventDefault();
+        }
+
+        if (pilotNameInput !== "Is a Number" || copilotNameInput !== "Is a Number") {
+        alert ("Please enter a valid entry!");
+        }
+
+        if (fuelLevelInput === "Not a Number" || cargoMassInput === "Not a Number") {
+            alert ("Please enter a valid entry!");
         }
     });
 });

@@ -20,6 +20,7 @@ window.addEventListener("load", function(event) {
             cargoMassInput.value === ""
         ){  
         alert("All fields are required!");
+        return;
         }
 
         if (!isNaN(pilotNameInput.value) || !isNaN(copilotNameInput.value)) {

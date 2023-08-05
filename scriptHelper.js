@@ -3,7 +3,7 @@ require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
 
-    const missionTarget = document.getElementById("missionTagret");
+    const missionTarget = document.getElementById("missionTarget");
    // Here is the HTML formatting for our mission target div.
    missionTarget.innerHTMl = `
                 <h2>Mission Destination</h2>
